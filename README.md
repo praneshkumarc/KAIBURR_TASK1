@@ -61,7 +61,6 @@ mvn -DskipTests package
 docker build -t task-runner-api:podrunner .
 
 # Run container pointing to a local MongoDB on the host
-# (host.docker.internal works on Docker Desktop; adjust for your platform)
 docker run --rm -p 8081:8081 \
   -e SPRING_DATA_MONGODB_URI="mongodb://host.docker.internal:27017/taskrunner" \
   task-runner-api:podrunner
