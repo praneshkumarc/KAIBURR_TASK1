@@ -59,6 +59,13 @@ curl -i -X PUT http://localhost:8081/api/tasks/123/executions
 
 <img width="1204" height="930" alt="Screenshot 2025-10-19 093404" src="https://github.com/user-attachments/assets/fef6cdb1-931f-4c47-b4ae-047608361515" />
 
+## Build Jar
+```bash
+# From backend/
+mvn -DskipTests package
+java -jar target/task-runner-api-0.0.1-SNAPSHOT.jar
+```
+
 ## Docker
 ```bash
 # Build jar then image (from backend/)
