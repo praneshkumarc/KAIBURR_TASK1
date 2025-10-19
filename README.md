@@ -30,17 +30,20 @@ Values can be set via environment variables (defaults shown from `application.ym
 - `RUNNER_NAMESPACE` (default: `task-runner`)
 - `RUNNER_JOB_TIMEOUT_SECONDS` (default: `60`)
 - `RUNNER_IMAGE` (default: `busybox:1.36.1`)
-- `FRONTEND_ORIGIN` (default: `http://localhost:5173`)
 
-## Build & Run Locally
+## Local Run (No Kubernetes)
+The backend can execute task commands directly on the host. MongoDB still backs task storage.
+
 ```bash
-# From backend/
-mvn -DskipTests package
-java -jar target/task-runner-api-0.0.1-SNAPSHOT.jar
-# App listens on http://localhost:8081
+# 1. Start MongoDB (run once; leave this terminal open)
+docker run --rm --name taskrunner-mongo -p 27017:27017 mongo:6
+
+# 2. Launch the Spring Boot app in another terminal
+export RUNNER_MODE=local
+mvn spring-boot:run
 ```
 
-### Local Test (without Kubernetes pod execution)
+### Smoke Test
 ```bash
 # List tasks
 curl -s http://localhost:8081/api/tasks | python3 -m json.tool
@@ -50,9 +53,11 @@ curl -i -X PUT http://localhost:8081/api/tasks \
   -H 'Content-Type: application/json' \
   -d '{"id":"123","name":"Hello","owner":"You","command":"echo hello"}'
 
-# Trigger execution (requires Kubernetes access as configured)
+# Trigger execution
 curl -i -X PUT http://localhost:8081/api/tasks/123/executions
 ```
+
+<img width="1204" height="930" alt="Screenshot 2025-10-19 093404" src="https://github.com/user-attachments/assets/fef6cdb1-931f-4c47-b4ae-047608361515" />
 
 ## Docker
 ```bash
