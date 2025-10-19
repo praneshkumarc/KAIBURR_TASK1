@@ -1,0 +1,15 @@
+com/example/taskrunner/model/Task.class
+com/example/taskrunner/util/NameUtil.class
+com/example/taskrunner/service/TaskService.class
+com/example/taskrunner/controller/TaskController.class
+com/example/taskrunner/service/JobRunner.class
+com/example/taskrunner/exception/RestExceptionHandler.class
+com/example/taskrunner/config/KubernetesConfig.class
+com/example/taskrunner/model/TaskExecution.class
+com/example/taskrunner/config/CorsConfig.class
+com/example/taskrunner/TaskRunnerApiApplication.class
+com/example/taskrunner/service/CommandValidator.class
+com/example/taskrunner/repo/TaskRepository.class
+com/example/taskrunner/exception/ApiError.class
+com/example/taskrunner/service/KubernetesJobRunner.class
+com/example/taskrunner/service/LocalCommandRunner.class
